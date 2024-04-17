@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Favorite Channels</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin: 0;
+        padding: 20px;
+        background-color: #f9f9f9; /* Light gray color */
+      }
+      h2,
+      h3 {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Favorite Channels</h2>
+    <form action="{{ url_for('favorite_channels') }}" method="post">
+      <label for="channel_name">Channel Name:</label>
+      <input
+        type="text"
+        id="channel_name"
+        name="channel_name"
+        required
+      /><br /><br />
+      <label for="channel_frequency">Channel Frequency:</label>
+      <input
+        type="text"
+        id="channel_frequency"
+        name="channel_frequency"
+        required
+      /><br /><br />
+      <input type="submit" value="Add to Favorites" />
+    </form>
+    {% if message %}
+    <p>{{ message }}</p>
+    {% endif %} {% if favorite_channels %}
+    <h3>Your Favorite Channels List:</h3>
+    <ul>
+      {% for channel in favorite_channels %}
+      <li>
+        <strong>Channel Name:</strong> {{ channel[0] }},
+        <strong>Frequency:</strong> {{ channel[1] }},
+        <strong>Language:</strong> {{ channel[2] }}
+      </li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p>No favorite channels yet.</p>
+    {% endif %}
+  </body>
+</html>

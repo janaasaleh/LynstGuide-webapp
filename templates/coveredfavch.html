@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Covered Favorite Channels</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin: 0;
+        padding: 20px;
+        background-color: #f9f9f9; /* Light background color */
+      }
+      h2,
+      h3 {
+        color: red; /* Red titles */
+      }
+      table {
+        margin: 0 auto; /* Center the table */
+        border-collapse: collapse; /* Collapse table borders */
+        width: 80%; /* Set table width */
+      }
+      th,
+      td {
+        border: 1px solid #ddd; /* Add border to table cells */
+        padding: 8px;
+      }
+      th {
+        background-color: #f2f2f2; /* Light gray background for table headers */
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Covered Favorite Channels</h2>
+    <form action="{{ url_for('covered_favorite_channels') }}" method="post">
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required /><br /><br />
+      <label for="region">Region:</label>
+      <input type="text" id="region" name="region" required /><br /><br />
+      <input type="submit" value="Show Covered Channels" />
+    </form>
+    {% if covered_channels %}
+    <h3>Covered Channels in your List</h3>
+    <table>
+      <tr>
+        <th>Channel Name</th>
+        <th>Satellite Name</th>
+        <th>Frequency</th>
+        <th>Encryption</th>
+      </tr>
+      {% for channel in covered_channels %}
+      <tr>
+        <td>{{ channel.ChannelName }}</td>
+        <td>{{ channel.SatName }}</td>
+        <td>{{ channel.Frequency }}</td>
+        <td>
+          {% if channel.Encryption %}Encrypted{% else %}Not Encrypted{% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+    {% else %}
+    <p>
+      No favorite channels are covered in the specified region. Please try
+      another region.
+    </p>
+    {% endif %}
+  </body>
+</html>

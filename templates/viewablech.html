@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Viewable Channels</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin: 0;
+        padding: 20px;
+        background-color: #f9f9f9; /* Light gray color */
+      }
+      h2,
+      th {
+        color: red;
+      }
+      table {
+        margin: 0 auto; /* Center the table */
+        border-collapse: collapse; /* Collapse table borders */
+        width: 80%; /* Set table width */
+        border: 1px solid #ddd; /* Add border to the table */
+      }
+      th,
+      td {
+        border: 1px solid #ddd; /* Add border to cells */
+        padding: 8px; /* Add padding */
+      }
+      th {
+        background-color: #f2f2f2; /* Light gray background for headers */
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Viewable Channels</h2>
+    {% if channels %}
+    <table>
+      <tr>
+        <th>Channel Name</th>
+        <th>Frequency</th>
+        <th>Language</th>
+        <th>Position</th>
+      </tr>
+      {% for channel in channels %}
+      <tr>
+        <td>{{ channel[0] }}</td>
+        <td>{{ channel[1] }}</td>
+        <td>{{ channel[2] }}</td>
+        <td>{{ channel[3] }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+    {% else %}
+    <p>No channels available</p>
+    {% endif %}
+    <form action="{{ url_for('viewable_channels') }}" method="post">
+      <label for="longitude">Longitude:</label>
+      <input type="text" id="longitude" name="longitude" required /><br /><br />
+      <input type="submit" value="Show Channels" />
+    </form>
+  </body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Lynst Guide - User Registration</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+    />
+    <style>
+      body {
+        background-color: #f2f2f2; /* Light gray background color */
+        margin-top: 20px; /* Margin between top of page and content */
+        margin-bottom: 20px;
+      }
+      .container {
+        text-align: center; /* Center align content */
+      }
+      h2 {
+        margin-bottom: 20px; /* Margin between title and form */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Lynst Guide</h1>
+      <h2>User Registration</h2>
+      <form action="{{ url_for('register') }}" method="post">
+        {% if message is defined and message %}
+        <div class="alert alert-warning">{{ message }}</div>
+        {% endif %}
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            name="email"
+            placeholder="Enter email"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="username">Username:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="username"
+            name="username"
+            placeholder="Enter username"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="gender">Gender:</label>
+          <select class="form-control" id="gender" name="gender" required>
+            <option value="">Select Gender</option>
+            <option value="Male">M</option>
+            <option value="Female">F</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="birthdate">Birthdate:</label>
+          <input
+            type="date"
+            class="form-control"
+            id="birthdate"
+            name="birthdate"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="location">Location:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="location"
+            name="location"
+            placeholder="Enter location"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="region">Region:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="region"
+            name="region"
+            placeholder="Enter region"
+            required
+          />
+        </div>
+        <button type="submit" class="btn btn-info">Register</button>
+      </form>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Top Growing Satellites</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+      h2 {
+        margin-right: 10px;
+        color: red;
+      }
+      ul {
+        list-style-type: none;
+        padding: 0;
+      }
+      li {
+        margin-bottom: 10px;
+      }
+      ol {
+        list-style-type: decimal;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Top 5 Growing Satellites</h2>
+    <ol>
+      {% for SatName, growthrate in topSats %}
+      <li><strong>{{ SatName }}</strong>: {{ growthrate }} Chs/day</li>
+      {% endfor %}
+    </ol>
+  </body>
+</html>

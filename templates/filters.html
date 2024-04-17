@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Channel Filter</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin: 0;
+        padding: 20px;
+      }
+      h2 {
+        color: red;
+      }
+      table {
+        width: 50%;
+        margin: 20px auto;
+        border-collapse: collapse;
+      }
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 8px;
+      }
+      th {
+        background-color: #f2f2f2;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Choose your filter</h2>
+    <form action="/filter-channels" method="POST">
+      <label for="region">Region:</label>
+      <input type="text" id="region" name="region" /><br /><br />
+
+      <label for="satellite">Satellite:</label>
+      <input type="text" id="satellite" name="satellite" /><br /><br />
+
+      <label for="language">Language:</label>
+      <input type="text" id="language" name="language" /><br /><br />
+
+      <input type="submit" value="Submit" />
+    </form>
+
+    <h2>Filtered Channels</h2>
+    {% if channels %}
+    <table>
+      <tr>
+        <th>Channels</th>
+      </tr>
+      {% for channel in channels %}
+      <tr>
+        <td>{{ channel }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+    {% else %}
+    <p>No channels found matching the filter criteria.</p>
+    {% endif %}
+  </body>
+</html>

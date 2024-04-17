@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Top Rockets by Number of Satellites</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f9f9f9; /* Light background color */
+      }
+      h2 {
+        color: red; /* Red title */
+      }
+      table {
+        margin-top: 20px; /* Add space between title and table */
+        border-collapse: collapse; /* Collapse table borders */
+        width: 80%; /* Set table width */
+        margin: auto; /* Center align the table */
+      }
+      th,
+      td {
+        border: 1px solid #ddd; /* Add border to table cells */
+        padding: 8px;
+        text-align: center; /* Center align table cells */
+      }
+      th {
+        background-color: #f2f2f2; /* Light gray background for table headers */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="rocket-list">
+      <h2>Top Rockets by Number of Satellites</h2>
+      <table>
+        <tr>
+          <th>Rocket</th>
+          <th>Number of Satellites</th>
+        </tr>
+        {% for rocket in toprockets %}
+        <tr>
+          <td>{{ rocket[0] }}</td>
+          <td>{{ rocket[1] }}</td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </body>
+</html>
